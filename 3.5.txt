@@ -1,0 +1,31 @@
+create or replace procedure insert_transaction(
+		bcode in book_transactions.book_code%type,
+		scode in book_transactions.student_code%type,
+		issue_date in book_transactions.book_issue_date%type,
+		return_date in book_transactions.book_expected_return_date%type
+		)
+is
+begin
+		
+		insert into book_transactions values(bcode,scode,null,sysdate,return_date,null);
+		commit;
+end;
+
+
+declare 
+bcode number;
+scode number;
+issue_date date:=sysdate;
+return_date date;
+temp varchar2(20);
+begin
+		select to_char(sysdate+10,'DAY') INTO temp FROM DUAL;
+		if(temp='SATURDAY') then
+		select (sysdate+12) INTO return_date FROM DUAL;
+		elsif (temp='SUNDAY')then
+		select (sysdate+11) INTO return_date FROM DUAL;
+		else
+		select (sysdate+10) INTO return_date FROM DUAL;
+		end if;
+	insert_transaction(&bcode,&scode,issue_date,return_date);
+end;

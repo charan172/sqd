@@ -1,0 +1,16 @@
+declare
+	sname staff_master.staff_name%type;
+	dcode staff_master.dept_code%type;
+	dname department_master.dept_name%type;
+	employeename varchar2(50) :='&name';
+begin
+	select a.staff_name,b.dept_code,b.dept_name into sname,dcode,dname from staff_master a,department_master b where a.dept_code=b.dept_code and a.staff_name=employeename;
+	DBMS_OUTPUT.PUT_LINE('Associate name '||sname);
+	DBMS_OUTPUT.PUT_LINE('Department Name '||dname);
+	DBMS_OUTPUT.PUT_LINE('Department code '||dcode);
+	EXCEPTION
+		WHEN
+			NO_DATA_FOUND
+		THEN
+			DBMS_OUTPUT.PUT_LINE('Staff details not found');
+end;

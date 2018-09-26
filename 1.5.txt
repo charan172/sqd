@@ -1,0 +1,10 @@
+declare 
+	s_salary staff_master.staff_sal%type;
+begin
+	update staff_master
+	set staff_sal=staff_sal+5000 
+	where ((staff_sal*0.3)>5000);
+	update staff_master
+	set staff_sal=staff_sal*1.3 
+	where ((staff_sal*0.3)<=5000);
+end;

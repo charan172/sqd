@@ -1,0 +1,16 @@
+SQL> DECLARE
+  2  V_Sample1 NUMBER(2);
+  3  V_Sample2 CONSTANT NUMBER(2) ;
+  4  V_Sample3 NUMBER(2) NOT NULL ;
+  5  V_Sample4 NUMBER(2) := 50;
+  6  V_Sample5 NUMBER(2) DEFAULT 25;
+  7  /
+V_Sample5 NUMBER(2) DEFAULT 25;
+                              *
+ERROR at line 6:
+ORA-06550: line 6, column 31:
+PLS-00103: Encountered the symbol "end-of-file" when expecting one of the
+following:
+begin function pragma procedure subtype type <an identifier>
+<a double-quoted delimited-identifier> current cursor delete
+exists prior

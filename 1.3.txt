@@ -1,0 +1,13 @@
+declare
+	staffRecord staff_master%rowtype;
+begin
+	select * into staffrecord from staff_master where staff_code=7369;
+	DBMS_OUTPUT.PUT_LINE('Associateid '||staffrecord.staff_code);
+	DBMS_OUTPUT.PUT_LINE('Name'||staffrecord.staff_name);
+	DBMS_OUTPUT.PUT_LINE('Department code '||staffrecord.dept_code);
+	EXCEPTION
+		WHEN
+			NO_DATA_FOUND
+		THEN
+			DBMS_OUTPUT.PUT_LINE('Staff details not found');
+END;
